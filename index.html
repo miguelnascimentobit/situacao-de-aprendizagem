@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Associação Comunitária - Cadastro</title>
+  <link rel="stylesheet" href="resources/css/style.css">
+  <script src="resources/script/script.js" defer></script>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>Associação Comunitária de Bairro</h1>
+      <p>Sistema de Cadastro e Gestão de Moradores</p>
+    </header>
+
+    <!-- FORMULÁRIO DE CADASTRO / EDIÇÃO -->
+    <section class="card">
+      <h2 id="titulo-form">Cadastrar Novo Morador</h2>
+      
+      <form id="form-morador">
+        <!-- Campo oculto para guardar o índice do morador em edição -->
+        <input type="hidden" id="index-edicao" value="">
+
+        <div class="form-grid">
+          <div class="campo">
+            <label for="nome">Nome Completo *</label>
+            <input type="text" id="nome" required placeholder="Ex: Maria da Silva">
+          </div>
+
+          <div class="campo">
+            <label for="telefone">Telefone / WhatsApp *</label>
+            <input type="tel" id="telefone" required placeholder="Ex: (11) 98765-4321">
+          </div>
+
+          <div class="campo">
+            <label for="bairro">Bairro / Rua *</label>
+            <input type="text" id="bairro" required placeholder="Ex: Centro - Rua 10">
+          </div>
+
+          <div class="campo">
+            <label for="atividade">Atividade Principal</label>
+            <select id="atividade">
+              <option value="Reunião Comunitária">Reunião Comunitária</option>
+              <option value="Oficina de Artesanato">Oficina de Artesanato</option>
+              <option value="Futebol Comunitário">Futebol Comunitário</option>
+              <option value="Cesta Básica / Benefício">Cesta Básica / Benefício</option>
+              <option value="Outro">Outro</option>
+            </select>
+          </div>
+
+          <div class="campo full-width">
+            <label for="solicitacao">Solicitação ou Observação</label>
+            <textarea id="solicitacao" rows="3" placeholder="Descreva a solicitação ou necessidade do morador..."></textarea>
+          </div>
+        </div>
+
+        <div class="botoes-form">
+          <button type="submit" id="btn-salvar" class="btn btn-verde">Salvar Morador</button>
+          <button type="button" id="btn-cancelar" class="btn btn-cinza" onclick="limparFormulario()" style="display: none;">Cancelar Edição</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- CONSULTA E TABELA DE REGISTROS -->
+    <section class="card">
+      <h2>Moradores Cadastrados</h2>
+
+      <!-- Campo de busca/filtro -->
+      <div class="busca-container">
+        <label for="input-busca">🔍 Buscar Morador:</label>
+        <input type="text" id="input-busca" onkeyup="filtrarMoradores()" placeholder="Digite um nome, telefone ou bairro para filtrar...">
+      </div>
+
+      <!-- Tabela de exibição -->
+      <div class="tabela-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Telefone</th>
+              <th>Bairro/Rua</th>
+              <th>Atividade</th>
+              <th>Solicitação</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody id="tabela-corpo">
+            <!-- Preenchido dinamicamente pelo JavaScript -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <!-- Vincula o arquivo JavaScript externo -->
+  <script src="script.js"></script>
+</body>
+</html>
